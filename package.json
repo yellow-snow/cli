@@ -2,10 +2,40 @@
   "name": "@yellowsnow/cli",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/mocha/bin/mocha \"src/**/*.spec.ts\" --recursive --require node_modules/ts-node/register.js",
+    "test:watch": "npm run test -- --watch-extensions ts,spec.ts --watch",
+    "coverage": "node node_modules/nyc/bin/nyc.js --extension .ts --reporter lcov --reporter text npm run test",
+    "start": "npm run build && node lib/",
+    "start:watch": "node node_modules/npm-run-parallel build:watch _start:watch",
+    "_start:watch": "nodemon node lib",
+    "build": "npm run clean && node node_modules/typescript/bin/tsc --p tsconfig.json",
+    "build:watch": "node_modules/typescript/bin/tsc --p tsconfig.json --watch",
+    "prepublish": "npm run build",
+    "clean": "rm -rf lib",
+    "docs": "node node_modules/typedoc/bin/typedoc --out docs/ src/ && echo '*\n!.gitignore' > docs/.gitignore",
+    "lint": "node node_modules/tslint/bin/tslint -c tslint.json -e \"**/*.spec.ts\"  src/**/*.ts"
+  },
+  "bin": {
+    "ys": "bin/index.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^5.4.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.34",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "npm-run-parallel": "^0.6.0",
+    "nyc": "^11.2.1",
+    "ts-node": "^3.3.0",
+    "typedoc": "^0.9.0",
+    "typescript": "^2.5.3"
+  }
 }
