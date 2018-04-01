@@ -1,0 +1,11 @@
+{
+	"extends": [
+
+	],
+	"rules": {
+		"no-boolean-literal-compare": false,
+		"strict-boolean-expressions": false,
+        "indent": [true, "tab", 4],
+		"variable-name": ["allow-pascal-case"]
+	}
+}
