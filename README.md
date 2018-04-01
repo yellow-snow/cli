@@ -25,6 +25,6 @@ npm install -g .
 
 ```bash
 cd ~/
-yc --new new-project
+ys --new new-project
 node ./new-project
 ```
