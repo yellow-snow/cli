@@ -26,7 +26,6 @@ export const main = function (...args: string[]): number {
         const name: string = program.new;
         opts = new NewProjectOptions(name);
         cmd = new NewProjectCommand();
-        cmd.run(opts);
     } else {
         opts = <any>undefined;
         cmd = new HelpCommand();
