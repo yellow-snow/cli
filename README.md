@@ -25,6 +25,9 @@ npm install -g .
 
 ```bash
 cd ~/
-ys --new new-project
-node ./new-project
+ys --new <name>
+node ./<name>
 ```
+> **Output:**
+>
+> Hello <name>
