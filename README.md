@@ -1,5 +1,9 @@
 # YellowSnow | CLI
 
+## Goal
+
+A CLI tool used to generate a powerful TypeScript framework project.
+
 ## Usage
 
 ### Compiling from source
